@@ -1,0 +1,5 @@
+TESTindex
+
+<?php
+
+xprint($res);

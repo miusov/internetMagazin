@@ -1,0 +1,230 @@
+body{
+    background-color: #F1F1F1;
+}
+
+h1,h2,h3,h4,h5,h6{
+    margin: 0;
+    padding: 0;
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+
+.header{
+    background-color: #fff;
+    border: 1px solid gray;
+    padding: 20px 10px;
+    background-color: #23282D;
+    color: lightgray;
+}
+
+.left-sidebar{
+    background-color: #23282D;
+    padding: 20px 10px;
+    font-size: 18px;
+    border: 1px solid gray;
+}
+
+.navbar{
+    padding: 0;
+}
+
+.navbar li{
+    margin-bottom: -1px;
+    border-bottom: 1px solid lightgray;
+    border-top: 1px solid lightgray;
+    padding: 10px;
+    color: lightgray;
+}
+
+.navbar li:hover{
+    color: #1966CB;
+    background-color: #191E23;
+}
+
+.navbar li:hover{
+    background-color: rgba(173, 216, 230, 0.18);
+}
+
+.navbar a{
+    color: #0f0f0f;
+    text-decoration: none;
+}
+
+.head{
+    padding: 5px 10px;
+    border: 1px solid gray;
+}
+
+.body-row{
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid gray;
+}
+
+.tovar-block{
+    padding: 20px 10px;
+    transition: all .5s;
+    height: 240px;
+}
+
+.tovar-block:hover{
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.tovar-block img{
+    margin-bottom: 20px;
+}
+
+.content-row{
+    background-color: #fff;
+    border: 1px solid gray;
+}
+
+.table-hover tbody tr td a:nth-child(1){
+    color: green;
+}
+.table-hover tbody tr td a:nth-child(3){
+    color: red;
+}
+
+.table-hover thead th:hover{
+    color: #1966CB;
+    background-color: #191E23;
+    cursor: pointer;
+}
+
+.form-add-item input[type='text'], .form-add-item textarea{
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.form-add-item select{
+    margin-bottom: 15px;
+}
+
+.form-add-item input[type='checkbox']{
+    margin-right: 10px;
+}
+
+.h4click{
+    background-color: lightgray;
+    padding: 5px 15px 10px 15px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.div-editor1,.div-editor2,.div-editor3,.div-editor4{
+    display: none;
+}
+
+#opt_item{
+    border-bottom: 1px solid lightgray;
+    border-top: 1px solid lightgray;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px 15px;
+}
+
+.btn-item{
+    margin-bottom: 30px;
+}
+
+.osn-img{
+    margin: 10px 0;
+}
+
+#add-input{
+    cursor: pointer;
+    text-decoration: underline;
+    color: green;
+}
+
+.addimage input{
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.delete-input, #delimage, .delimage{
+    cursor: pointer;
+    color: red;
+    font-weight: bold;
+}
+
+.mb15{
+    margin-bottom: 15px;
+}
+
+#allsort, #modsort, #nomodsort{
+    cursor: pointer;
+}
+
+.admin-review{
+    padding: 0 20px;
+}
+
+.counts{
+    position: absolute;
+    right: 5px;
+    padding: 0 10px;
+    background-color: rgba(173, 216, 230, 0.51);
+    font-weight: bold;
+}
+
+.cellpadding td{
+    padding: 2px 5px;
+}
+
+select#category{
+    display: block;
+}
+#edit-category select, #edit-category input{
+    width: 100%;
+}
+
+.block-client, .block-admin, .block-order{
+    border-bottom: 1px solid grey;
+    border-top: 1px solid grey;
+    padding: 10px;
+    margin-top: -1px;
+}
+.block-client{
+    cursor: pointer;
+}
+
+.count-client{
+    background-color: #fff;
+}
+
+.table-client{
+    display: none;
+}
+
+.table-client tr td{
+    padding: 5px;
+}
+
+.green{
+    color: green;
+}
+
+.red{
+    color: red;
+}
+
+.table-info{
+    font-size: 20px;
+    font-weight: bold;
+    margin: 30px 0;
+}
+
+.table-info tr{
+    border-bottom: 1px dotted lightgray;
+}
+
+.table-info td{
+    padding: 10px;
+}
