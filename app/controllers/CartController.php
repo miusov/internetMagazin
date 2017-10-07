@@ -15,7 +15,7 @@ class CartController extends AppController
         $main = new Main();
 
         $action = $this->clr_str($_GET['action']);
-
+	    $breadcrumbs = '';
         switch ($action)
         {
             case 'onclick':
@@ -182,6 +182,7 @@ class CartController extends AppController
 
         if (count($cart) > 0){
             $count = 0;
+	        $int = 0;
             foreach ($cart as $k => $v)
             {
                 $count = $count + $v['cart_count'];

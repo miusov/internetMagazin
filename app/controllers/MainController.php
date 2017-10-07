@@ -102,9 +102,9 @@ class MainController extends AppController
         elseif (isset($_GET['end_price'])) {$count = R::count('tableproducts', "WHERE visible=1 AND price BETWEEN $start_price AND {$_GET['end_price']}");}
         elseif (isset($check_brands) && isset($_GET['end_price'])) {$count = R::count('tableproducts', "WHERE visible=1 AND brand_id IN($check_brands) AND price BETWEEN $start_price AND {$_GET['end_price']}");}
         elseif (isset($_GET['search'])) {$count = R::count('tableproducts', "WHERE title LIKE '%{$_GET['search_input']}%' AND visible=1");}
-        elseif ($_GET['go'] == 'new') {$count = R::count('tableproducts', "WHERE new='1' AND visible=1");}
-        elseif ($_GET['go'] == 'leader') {$count = R::count('tableproducts', "WHERE leader='1' AND visible=1");}
-        elseif ($_GET['go'] == 'sale') {$count = R::count('tableproducts', "WHERE sale='1' AND visible=1");}
+        elseif (isset($_GET['go']) && $_GET['go'] == 'new') {$count = R::count('tableproducts', "WHERE new='1' AND visible=1");}
+        elseif (isset($_GET['go']) && $_GET['go'] == 'leader') {$count = R::count('tableproducts', "WHERE leader='1' AND visible=1");}
+        elseif (isset($_GET['go']) && $_GET['go'] == 'sale') {$count = R::count('tableproducts', "WHERE sale='1' AND visible=1");}
         else {$count = R::count('tableproducts', 'WHERE visible=1');}
 
         if ($count > 0)
@@ -151,7 +151,7 @@ class MainController extends AppController
             }
 
             // в $prod попадает массив для вывода товаров------------------------------
-
+	    $empty = '';
         if ((isset($brand) && isset($type)) || isset($type) || (isset($brand) && isset($type) && isset($sorting)) || isset($type) && isset($sorting))
         {
             $prod = R::findAll("tableproducts", "WHERE visible=1 $querycat ORDER BY $sorting $paginat");
@@ -160,15 +160,15 @@ class MainController extends AppController
         {
             $prod = R::findAll("tableproducts", "WHERE visible=1 $query_brand ORDER BY $sorting $paginat");
         }
-        elseif ($_GET['go'] == 'new')
+        elseif (isset($_GET['go']) && $_GET['go'] == 'new')
         {
             $prod = R::findAll("tableproducts", "WHERE visible=1 $query_brand AND new='1' ORDER BY $sorting $paginat");
         }
-        elseif ($_GET['go'] == 'leader')
+        elseif (isset($_GET['go']) && $_GET['go'] == 'leader')
         {
             $prod = R::findAll("tableproducts", "WHERE visible=1 $query_brand AND leader='1' ORDER BY $sorting $paginat");
         }
-        elseif ($_GET['go'] == 'sale')
+        elseif (isset($_GET['go']) && $_GET['go'] == 'sale')
         {
             $prod = R::findAll("tableproducts", "WHERE visible=1 $query_brand AND sale='1' ORDER BY $sorting $paginat");
         }
