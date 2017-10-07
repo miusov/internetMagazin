@@ -146,39 +146,26 @@
                 <div class="col-sm-4 col-md-3 left-sidebar">
                     <div class="category-items">
                         <p class="category-items-title">Категории</p>
-                        <p class="cat-link" id="cat1">Мобильные телефоны</p>
-                        <ul>
-                            <a href="/main?type=mobile"><li id="sub-cat1"><b>Все товары этой категории</b></li></a>
-                            <?php
-                            $cat = R::findAll('category', 'type="mobile"');
-                            foreach ($cat as $key=>$value)
+                        <?php
+                        $c = R::findAll('category');
+                        $i = 1;
+                        foreach ($c as $k => $v)
+                        {
+                            $i++;
+                            echo "
+                            <p class='cat-link' id='cat".$i."'>".$v['type']."</p>
+                            <ul>
+                            <a href='/main?type=".$v['type']."'><li id='sub-cat1'><b>Все товары этой категории</b></li></a>
+                            ";
+	                        $b = R::findAll('brand','WHERE cat_id=?',[$v['id']]);
+	                        foreach ($b as $key => $value)
                             {
-                                echo "<a href='/main?brand=".strtolower($value['brand'])."&type={$value['type']}'> <li id='{$value['id']}'>{$value['brand']}</li></a>";
+	                            echo "<a href='/main?brand=".$value['brand']."&type={$v['type']}'> <li id='{$value['id']}'>{$value['brand']}</li></a>";
                             }
-                            ?>
-                        </ul>
-                        <p class="cat-link" id="cat2">Ноутбуки</p>
-                        <ul>
-                            <a href="/main?type=notebook"><li id="sub-cat2"><b>Все товары этой категории</b></li></a>
-                            <?php
-                            $cat = R::findAll('category', 'type="notebook"');
-                            foreach ($cat as $key=>$value)
-                            {
-                                echo "<a href='/main?brand=".strtolower($value['brand'])."&type={$value['type']}'> <li id='{$value['id']}'>{$value['brand']}</li></a>";
-                            }
-                            ?>
-                        </ul>
-                        <p class="cat-link" id="cat3">Планшеты</p>
-                        <ul>
-                            <a href="/main?type=tablet"><li id="sub-cat3"><b>Все товары этой категории</b></li></a>
-                            <?php
-                            $cat = R::findAll('category', 'type="tablet"');
-                            foreach ($cat as $key=>$value)
-                            {
-                                echo "<a href='/main?brand=".strtolower($value['brand'])."&type={$value['type']}'> <li id='{$value['id']}'>{$value['brand']}</li></a>";
-                            }
-                            ?>
-                        </ul>
+
+                            echo "</ul>";
+                        }
+                        ?>
                     </div>
                     <div class="search-in-param hidden-xs">
                         <p class="category-items-title">Поиск по параметрам</p>

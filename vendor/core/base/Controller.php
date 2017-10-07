@@ -67,7 +67,6 @@ class Controller
         $req = strip_tags($request);
         $req = trim($req);
         return $req;
-
     }
 
     

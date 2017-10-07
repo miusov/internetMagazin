@@ -173,6 +173,52 @@
         }
     });
 
+        $('#del-brand').click(function () {
+            if (confirm("Вы подтверждаете удаление?")) {
+                var selectid = $('#brand option:selected').val();
+                if (!selectid)
+                {
+                    $('#brand').css('borderColor','red');
+                }
+                else
+                {
+                    $.ajax({
+                        type: "post",
+                        url: "/admincategory/delbrand",
+                        data: {id: selectid},
+                        dataType: "html",
+                        cache: false,
+                        success: function (data) {
+                            console.log(data);
+                            if (data == 'del')
+                            {
+                                $('#mess').html('<div class="alert-info text-center">Запись удалена!</div>');
+                                $('#brand option:selected').remove();
+                            }
+                        }
+                    });
+                }
+            }
+            else{
+                console.log('false');
+                return false;
+            }
+        });
+
+        $('#type').change(function () {
+            $('#brand').find('option.brand').remove();
+            var selectid = $('#type option:selected').val();
+            console.log(selectid);
+            $.ajax({
+                url: "/adminitem/loadbrand",
+                type: "post",
+                data: {id:selectid},
+                success: function (data) {
+                    $('#brand').append(data);
+                }
+            })
+        });
+
     $('.block-client').click(function () {
         if($(this).children('table').css('display') == 'none'){
             $(this).children('table').slideDown(400);

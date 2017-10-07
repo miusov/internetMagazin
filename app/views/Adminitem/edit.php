@@ -31,25 +31,24 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="type" class="col-md-2">*Тип товара:</label>
-            <div class="col-md-10">
+            <label for="type" class="col-sm-2">*Категория:</label>
+            <div class="col-sm-10">
                 <select class="form-control" id="type" name="type">
-                    <option <?=$mobile?> value="mobile">Мобильные телефоны</option>
-                    <option <?=$notebook?> value="notebook">Ноутбуки</option>
-                    <option <?=$tablet?> value="tablet">Планшеты</option>
+                    <option value='0'>Выберите категорию</option>
+				    <?php
+				    foreach ($cat as $k=>$v)
+				    {
+					    echo "<option value='{$v['id']}'>{$v['type']}</option>";
+				    }
+				    ?>
                 </select>
             </div>
         </div>
         <div class="form-group">
-            <label for="category" class="col-md-2">*Бренд:</label>
-            <div class="col-md-10">
-                <select class="form-control" id="category" name="brand">
-                    <?php
-                    foreach ($cat as $k=>$v)
-                    {
-                        echo "<option value='{$v['id']}'>{$v['type']} | {$v['brand']}</option>";
-                    }
-                    ?>
+            <label class="control-label col-sm-2" for="seo_words">*Бренд:</label>
+            <div class="col-sm-10">
+                <select class="form-control" id="brand" name="brand">
+                    <option value='0'>Выберите бренд</option>
                 </select>
             </div>
         </div>
@@ -106,7 +105,7 @@
         <div class="form-group">
             <label class="control-label col-sm-2" for="seo_description">Ссылка на видео:</label>
             <div class="col-sm-10">
-                <textarea class="form-control" id="link_video" name="link_video" rows="4"><?=$item['link_video']?></textarea>
+                <textarea class="form-control" id="link_video" name="link_video" rows="4" placeholder='<iframe width="560" height="315" src="https://www.youtube.com/....." frameborder="0" allowfullscreen></iframe>'><?=$item['link_video']?></textarea>
             </div>
         </div>
         <div class="row col-md-12">

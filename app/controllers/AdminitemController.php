@@ -37,6 +37,7 @@ class AdminitemController extends AppController
             $this->layout = 'admin';
 
             $cat = R::findAll('category');
+            $br = R::findAll('brand');
 
             if (isset($_POST['add_item']))
             {
@@ -47,7 +48,8 @@ class AdminitemController extends AppController
                     if ($_POST['chk_leader'] == 'on') $_POST['chk_leader'] = 1;
                     if ($_POST['chk_visible'] == 'on') $_POST['chk_visible'] = 1;
 
-                    $brand = R::findOne('category',"WHERE id=?",[$_POST['brand']]);
+                    $brand = R::findOne('brand',"WHERE id=?",[$_POST['brand']]);
+                    $category = R::findOne('category','WHERE id=?',[$_POST['type']]);
                     $gen = Genpass::gen();
 
                     if (empty($_FILES['upload_image']['name']))
@@ -81,7 +83,7 @@ class AdminitemController extends AppController
                     if ($img == true)
                     {
                         R::getAll("INSERT INTO tableproducts(title,price,brand,seo_words,seo_description,mini_description,image,description,mini_features,features,link_video,created_at,new,leader,sale,visible,type_tovara,brand_id) 
-                           VALUES('{$_POST['title']}','{$_POST['price']}','{$brand['brand']}','{$_POST['seo_words']}','{$_POST['seo_description']}','{$_POST['txt1']}','{$filename}','{$_POST['txt2']}','{$_POST['txt3']}','{$_POST['txt4']}','{$_POST['link_video']}','".date('Y-m-d H:i:s')."','{$_POST['chk_new']}','{$_POST['chk_leader']}','{$_POST['chk_sale']}','{$_POST['chk_visible']}','{$_POST['type']}','{$_POST['brand']}')");
+                           VALUES('{$_POST['title']}','{$_POST['price']}','{$brand['brand']}','{$_POST['seo_words']}','{$_POST['seo_description']}','{$_POST['txt1']}','{$filename}','{$_POST['txt2']}','{$_POST['txt3']}','{$_POST['txt4']}','{$_POST['link_video']}','".date('Y-m-d H:i:s')."','{$_POST['chk_new']}','{$_POST['chk_leader']}','{$_POST['chk_sale']}','{$_POST['chk_visible']}','{$category['type']}','{$_POST['brand']}')");
                     }
 
                     $last = R::findLast('tableproducts');
@@ -121,12 +123,28 @@ class AdminitemController extends AppController
                 }
             }
 
-            $this->set(['cat'=>$cat]);
+            $this->set(['cat'=>$cat,'brand'=>$br]);
         }
         else
         {
             header('Location: /admin/login');
         }
+    }
+
+    public function loadbrandAction()
+    {
+	    $main = new Main();
+    	if (isset($_POST['id']))
+	    {
+			$res = R::findAll('brand','WHERE cat_id=?',[$_POST['id']]);
+			$str = "";
+		    foreach ( $res as $k => $v )
+		    {
+				 $str .= "<option value='{$v['id']}' class='brand'>{$v['brand']}</option>";
+			}
+			echo $str;
+		    die;
+	    }
     }
 
     public function editAction()
@@ -168,7 +186,7 @@ class AdminitemController extends AppController
                     if ($_POST['chk_leader'] == 'on') $_POST['chk_leader'] = 1;
                     if ($_POST['chk_visible'] == 'on') $_POST['chk_visible'] = 1;
 
-                    $brand = R::findOne('category',"WHERE id=?",[$_POST['brand']]);
+                    $brand = R::findOne('brand',"WHERE id=?",[$_POST['brand']]);
                     $gen = Genpass::gen();
 
                     if ($item['image'] == '../noimage.png')
@@ -249,7 +267,7 @@ class AdminitemController extends AppController
                         }
                     }
                     $_SESSION['mess'] = "<div class='alert-success text-center'>Измененно!</div>";
-                    echo "<script>setTimeout(location.href = 'http://myshop/adminitem/edit?item={$_POST['itemid']}', 1000)</script>";
+                    echo "<script>setTimeout(location.href = '/adminitem/edit?item={$_POST['itemid']}', 1000)</script>";
                 }
                 else
                 {

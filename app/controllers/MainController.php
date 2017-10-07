@@ -182,6 +182,7 @@ class MainController extends AppController
             $prod = R::findAll("tableproducts", "WHERE visible=1 ORDER BY $sorting $paginat");
         }
 
+
 //        AUTH--------------------------------
 
         $this->set([
