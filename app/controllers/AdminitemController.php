@@ -24,7 +24,7 @@ class AdminitemController extends AppController
         }
         else
         {
-            header('Location: /admin/login');
+            redirect('/admin/login');
         }
     }
 
@@ -121,13 +121,15 @@ class AdminitemController extends AppController
                 {
                     echo "<div class='alert-danger text-center'>Заполните поля со звездочкой * !</div>";
                 }
+                $_SESSION['mess'] = "<div class='alert-success text-center message'>Товар добавленн!</div>";
+                redirect('/admin/tovari');
             }
 
             $this->set(['cat'=>$cat,'brand'=>$br]);
         }
         else
         {
-            header('Location: /admin/login');
+            redirect('/admin/login');
         }
     }
 
@@ -266,7 +268,7 @@ class AdminitemController extends AppController
                                   VALUES('".$_POST['itemid']."','".$filesnames."')");
                         }
                     }
-                    $_SESSION['mess'] = "<div class='alert-success text-center'>Измененно!</div>";
+                    $_SESSION['mess'] = "<div class='alert-success text-center message'>Измененно!</div>";
                     echo "<script>setTimeout(location.href = '/adminitem/edit?item={$_POST['itemid']}', 1000)</script>";
                 }
                 else
@@ -291,7 +293,7 @@ class AdminitemController extends AppController
         }
         else
         {
-            header('Location: /admin/login');
+            redirect('/admin/login');
         }
     }
 
@@ -317,6 +319,7 @@ class AdminitemController extends AppController
             R::trash($var);
             $var2 = R::load('uploadsimages',"WHERE products_id=?," [$_POST['id']]);
             R::trash($var2);
+            $_SESSION['mess'] = "<div class='alert-danger text-center message'>Запись удалена!</div>";
             die;
         }
     }

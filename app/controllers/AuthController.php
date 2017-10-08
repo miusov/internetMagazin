@@ -82,7 +82,7 @@ class AuthController extends AppController
                     $logger = new Logger('LOGIN_USER');
                     $logger->pushHandler(new StreamHandler(ROOT.'/logs/login/log', Logger::INFO));
                     $logger->info('Login user', ['login'=>$_POST['login']]);
-                    header('Location: /');
+                    redirect();
                 }
                 else
                 {
@@ -116,7 +116,7 @@ class AuthController extends AppController
         unset($_SESSION['order_address']);
         unset($_SESSION['order_text']);
         unset($_SESSION['order_delivery']);
-        header('Location: /');
+        redirect();
     }
 
     public function remindAction()

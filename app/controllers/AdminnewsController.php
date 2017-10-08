@@ -23,7 +23,7 @@ class AdminnewsController extends AppController
         }
         else
         {
-            header('Location: /admin/login');
+            redirect('/admin/login');
         }
     }
 
@@ -35,7 +35,7 @@ class AdminnewsController extends AppController
         {
             $del = R::load('news', $_POST['id']);
             R::trash($del);
-            echo 'del';
+	        echo 'del';
             die;
         }
     }
@@ -50,7 +50,8 @@ class AdminnewsController extends AppController
             $var->text = $_POST['text'];
             $var->date = date('Y-m-d');
             $id = R::store($var);
-            echo 'OK';
+	        $_SESSION['mess'] = "<div class='alert-success text-center message'>Запись добавлена!</div>";
+	        echo 'OK';
             die;
         }
         else

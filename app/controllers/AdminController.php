@@ -30,7 +30,7 @@ class AdminController extends AppController
         }
         else
         {
-            header('Location: /admin/login');
+            redirect('/admin/login');
         }
     }
 
@@ -103,7 +103,7 @@ class AdminController extends AppController
         }
         else
         {
-            header('Location: /admin/login');
+            redirect('/admin/login');
         }
     }
 
@@ -188,6 +188,6 @@ class AdminController extends AppController
         unset($_SESSION['del_cat']);
         unset($_SESSION['rev_adm']);
 
-        header('Location: /admin/login');
+        redirect('/admin/login');
     }
 }

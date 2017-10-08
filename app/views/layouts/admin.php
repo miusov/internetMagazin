@@ -39,7 +39,7 @@ $ord = R::count('orders',"WHERE order_confirm='no'");
                     <a href="/adminorders?sort=no"><li>Заказы <span class="counts"><?php if ($ord > 0) echo "+".$ord ?></span></li></a>
                     <a href="/admin/tovari"><li>Товары</li></a>
                     <a href="/adminreview?sort=nomod"><li>Отзывы <span class="counts"><?php if ($rev > 0) echo "+".$rev?></span></li></a>
-                    <a href="/admincategory"><li>Категории</li></a>
+                    <a href="/admincategory"><li>Категории/Бренды</li></a>
                     <a href="/adminusers"><li>Клиенты</li></a>
                     <a href="/adminnews"><li>Новости</li></a>
                 </ul>

@@ -98,11 +98,11 @@ class CartController extends AppController
         {
             case 'clear':
                 $clear = R::exec("DELETE FROM cart WHERE cart_sid = '".session_id()."'");
-                header('Location: /cart?action=onclick');
+                redirect('/cart?action=onclick');
             break;
             case 'del':
                 $del = R::exec("DELETE FROM cart WHERE cart_sid = '".session_id()."' AND cart_id = '{$_GET['task']}'");
-                header('Location: /cart?action=onclick');
+                redirect('/cart?action=onclick');
                 break;
         }
     }
@@ -145,7 +145,7 @@ class CartController extends AppController
             }
 
         }
-        header('Location: /cart?action=completion');
+        redirect('/cart?action=completion');
     }
 
     public function addcartAction()

@@ -349,7 +349,10 @@
             else{
                 return false;
             }
-        })
+        });
+
+
+        setTimeout(function() { $(".message").hide('slow'); }, 2000);
 
 
     })

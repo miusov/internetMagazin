@@ -40,6 +40,7 @@
 	            }
 	            ?>
             </select>
+                <a href="/admincategory">Добавить Категорию</a>
             </div>
         </div>
         <div class="form-group">
@@ -48,6 +49,7 @@
                 <select class="form-control" id="brand" name="brand">
                     <option value='0'>Выберите бренд</option>
                 </select>
+                <a href="/admincategory">Добавить Бренд</a>
             </div>
         </div>
         <div class="form-group">

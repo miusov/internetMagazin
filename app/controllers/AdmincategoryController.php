@@ -14,8 +14,8 @@ class AdmincategoryController extends AppController
         $main = new Main();
         $this->layout = 'admin';
 
-        $category = R::findAll('category','ORDER BY id DESC');
-        $brand = R::getAll('SELECT * FROM category,brand WHERE brand.cat_id=category.id');
+        $category = R::findAll('category','ORDER BY type ASC');
+        $brand = R::getAll('SELECT * FROM category,brand WHERE brand.cat_id=category.id ORDER BY brand ASC');
 
         if (isset($_POST['add-cat-category']))
         {
@@ -26,7 +26,8 @@ class AdmincategoryController extends AppController
                 $var = R::dispense('category');
                 $var->type = $_POST['type'];
                 $id = R::store($var);
-                header('Location: /admincategory');
+	            $_SESSION['mess'] = "<div class='alert-succes text-center message'>Категория добавлена!</div>";
+	            redirect('/admincategory');
             }
         }
 
@@ -40,7 +41,9 @@ class AdmincategoryController extends AppController
 			        $var->brand = $_POST['brand'];
 			        $var->cat_id = $_POST['brand-cat-type'];
 			        $id = R::store($var);
-			        header('Location: /admincategory');
+			        $_SESSION['mess'] = "<div class='alert-succes text-center message'>Бренд добавлен!</div>";
+
+			        redirect('/admincategory');
 		        }
 	        }
 
@@ -48,7 +51,7 @@ class AdmincategoryController extends AppController
         }
         else
         {
-            header('Location: /admin/login');
+            redirect('/admin/login');
         }
     }
 
@@ -62,6 +65,7 @@ class AdmincategoryController extends AppController
             $del = R::load('category', $_POST['id']);
             R::trash($del);
 	        R::getAll('DELETE FROM brand WHERE cat_id=?',[$_POST['id']]);
+	        $_SESSION['mess'] = "<div class='alert-danger text-center message'>Категория удалена!</div>";
 
             echo 'del';
             die;
@@ -76,6 +80,7 @@ class AdmincategoryController extends AppController
 		{
 			$del = R::load('brand', $_POST['id']);
 			R::trash($del);
+			$_SESSION['mess'] = "<div class='alert-danger text-center message'>Бренд удален!</div>";
 
 			echo 'del';
 			die;

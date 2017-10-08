@@ -88,7 +88,7 @@ class AdminordersController extends AppController
         }
         else
         {
-            header('Location: /admin/login');
+            redirect('/admin/login');
         }
     }
 
@@ -132,7 +132,7 @@ class AdminordersController extends AppController
                                 $upd = R::load('orders', $_GET['id']);
                                 $upd->order_confirm = 'ok';
                                 R::store($upd);
-                                header("Location: /adminorders/view?id={$_GET['id']}");
+                                redirect("/adminorders/view?id={$_GET['id']}");
                             }
                             else
                             {
@@ -146,7 +146,7 @@ class AdminordersController extends AppController
                             $del = R::load('orders', $_GET['id']);
                             R::trash($del);
                             R::getAll("DELETE FROM buyproducts WHERE buy_id_order=?",[$_GET['id']]);
-                            header("Location: /adminorders?sort=no");
+                            redirect('/adminorders?sort=no');
                             }
                             else
                             {
@@ -165,7 +165,7 @@ class AdminordersController extends AppController
         }
         else
         {
-            header('Location: /admin/login');
+            redirect('/admin/login');
         }
     }
 

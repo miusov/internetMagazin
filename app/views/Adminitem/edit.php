@@ -2,7 +2,7 @@
 <div class="row head">
     <h3>Изменить товар</h3>
 </div>
-    <?=$_SESSION['mess']?>
+	<?php if (isset($_SESSION['mess'])) echo $_SESSION['mess']; unset($_SESSION['mess']); ?>
 <div id="alert"><?=$alert?></div>
 <div class="row content-row">
     <form enctype="multipart/form-data" method="post" id="additemform" class="form-add-item" action="/adminitem/edit">

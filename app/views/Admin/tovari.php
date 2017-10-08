@@ -1,3 +1,4 @@
+<?php if (isset($_SESSION['mess'])) echo $_SESSION['mess']; unset($_SESSION['mess']); ?>
 <div class="row head">
     <h3>Товары</h3>
 </div>

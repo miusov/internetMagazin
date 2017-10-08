@@ -92,7 +92,7 @@ class AdminreviewController extends AppController
         }
         else
         {
-            header('Location: /admin/login');
+            redirect('/admin/login');
         }
 
     }

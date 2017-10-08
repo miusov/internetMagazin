@@ -1,4 +1,4 @@
-<?php //xprint($brand); ?>
+<?php if (isset($_SESSION['mess'])) echo $_SESSION['mess']; unset($_SESSION['mess']); ?>
 <div class="row head">
     <h3>Редактор категорий</h3>
 </div>

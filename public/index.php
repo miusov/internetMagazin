@@ -6,6 +6,7 @@ use vendor\core\Router;
 
 
 require '../vendor/libs/helpers.php';
+require '../vendor/libs/functions.php';
 require '../vendor/autoload.php';
 
 $query = rtrim($_SERVER['QUERY_STRING'], '/');
