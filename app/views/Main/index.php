@@ -59,7 +59,7 @@ foreach ($prod as $key=>$value)
 ?>
     <div class='pstrnav text-center col-xs-12'>
         <ul>
-            <?=$pagin?>
+            <?= $paginat?>
         </ul>
     </div>
 </div>

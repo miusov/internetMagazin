@@ -45,7 +45,7 @@ $ord = R::count('orders',"WHERE order_confirm='no'");
                 </ul>
             </div>
             <div class="col-md-10">
-                <? echo $content ?>
+                <?= $content ?>
             </div>
         </div>
     </div>

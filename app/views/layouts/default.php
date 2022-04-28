@@ -225,7 +225,7 @@
                     </div>
                 </div>
                 <div class="col-sm-8 col-md-9 content">
-                    <? echo $content ?>
+                    <?= $content ?>
                 </div>
             </div>
         </div>

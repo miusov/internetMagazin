@@ -191,7 +191,7 @@ class MainController extends AppController
         'sort_name'=>$sort_name,
         'start_price'=>$start_price,
         'end_price'=>$end_price,
-        'pagin'=>$pagin
+        'pagin'=>$paginat
         ]);
 
 

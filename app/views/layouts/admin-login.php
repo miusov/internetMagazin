@@ -17,7 +17,7 @@
 <body>
 
 
-<? echo $content ?>
+<?= $content ?>
 
 
 <script src="/js/jquery3.2.0.min.js"></script>
